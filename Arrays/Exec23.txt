@@ -1,0 +1,49 @@
+//23. Exiba a matrícula (+ tempo) dos 10 primeiros colocados em relação a todos os atletas.
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define qtd 25000
+#define max 99
+#define min 10  
+
+int main() {
+    int matriculas[qtd]; 
+    int tempos[qtd];      
+    srand(time(0));    
+
+    for (int i = 0; i < qtd; i++) {
+        matriculas[i] = i + 1; 
+        tempos[i] = (rand() % (max - min + 1)) + min;  
+    }
+
+    printf("Tempos e Matrículas:\n");
+    for (int i = 0; i < qtd; i++) {
+        printf("Atleta %d - Tempo: %d minutos\n", matriculas[i], tempos[i]);
+    }
+    printf("\n");
+
+    for (int i = 0; i < qtd - 1; i++) {
+        int indice_min = i;
+        for (int j = i + 1; j < qtd; j++) {
+            if (tempos[j] < tempos[indice_min]) {
+                indice_min = j;  
+            }
+        }
+
+        int temp = tempos[i];
+        tempos[i] = tempos[indice_min];
+        tempos[indice_min] = temp;
+
+        int temp_matricula = matriculas[i];
+        matriculas[i] = matriculas[indice_min];
+        matriculas[indice_min] = temp_matricula;
+    }
+
+    printf("Os 10 primeiros colocados:\n");
+    for (int i = 0; i < 10; i++) {
+        printf("Atleta %d - Tempo: %d minutos\n", matriculas[i], tempos[i]);
+    }
+
+    return 0;
+}

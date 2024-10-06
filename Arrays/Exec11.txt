@@ -1,0 +1,34 @@
+// 11. Exibir na tela somente os termos entre [35, 40] do vetor acrescidos de 5%.
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define size 10   
+#define max 99.0 
+#define min 10.0  
+
+int main() {
+    float array[size]; 
+    srand(time(0));    
+
+    for (int i = 0; i < size; i++) {
+        array[i] = ((rand() % (int)((max - min) * 10 + 1)) / 10.0) + min;
+    }
+
+    printf("Números gerados: \n");
+    for (int i = 0; i < size; i++) {
+        printf("%.1f ", array[i]);
+    }
+    printf("\n");
+
+    printf("Números entre 35 e 40 acrescidos de 5%%: \n");
+    for (int i = 0; i < size; i++) {
+        if (array[i] >= 35.0 && array[i] <= 40.0) {
+            float valoracres = array[i] * 1.05; // Acresce 5%
+            printf("%.1f ", valoracres);
+        }
+    }
+
+    return 0;
+}
+

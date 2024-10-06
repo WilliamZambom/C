@@ -1,0 +1,65 @@
+//8. Exibir os dados ordenados em ordem crescente ou decrescente, a escolha do usuário.
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define size 100  
+#define max 99   
+#define min 10 
+
+int main(void) {
+    int array[size];
+    int escolha; 
+    srand(time(0)); 
+
+    for (int i = 0; i < size; i++) {
+        array[i] = (rand() % (max - min + 1)) + min; 
+    }
+
+    //Mostrar os números
+    printf("Números gerados: \n");
+    for (int i = 0; i < size; i++) {
+        printf("%d ", array[i]);
+    }
+    printf("\n");
+
+    // Pergunta ao usuário a ordem 
+    printf("Deseja exibir os números em ordem (1) Crescente ou (2) Decrescente? (1/2): ");
+    scanf("%d", &escolha);
+
+    for (int i = 0; i < size - 1; i++) {
+        for (int j = 0; j < size - i - 1; j++) {
+            if (escolha == 1) {
+                // Ordem crescente
+                if (array[j] > array[j + 1]) {
+                    int temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                }
+            } else if (escolha == 2) {
+                // Ordem decrescente
+                if (array[j] < array[j + 1]) {
+                    int temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                }
+            }
+        }
+    }
+
+    if (escolha == 1) {
+        printf("Números em ordem crescente: \n");
+    } else if (escolha == 2) {
+        printf("Números em ordem decrescente: \n");
+    } else {
+        printf("Escolha inválida! Por favor, digite 1 ou 2.\n");
+        return 1;
+    }
+
+    for (int i = 0; i < size; i++) {
+        printf("%d ", array[i]);
+    }
+
+    printf("\n");
+    return 0;
+}

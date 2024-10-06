@@ -1,0 +1,40 @@
+/*
+14. Exibir na tela a posição e a soma dos termos menores que ß.2
+"Declarar BETHA (ß = 27.54) como constante com o comando #define.
+*/ 
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define size 10   
+#define max 99.0 
+#define min 10.0  
+#define beta 27.54
+
+int main() {
+    float array[size]; 
+    float soma = 0.0;
+    srand(time(0));    
+
+    for (int i = 0; i < size; i++) {
+        array[i] = ((rand() % (int)((max - min) * 10 + 1)) / 10.0) + min;
+    }
+
+    printf("Números gerados: \n");
+    for (int i = 0; i < size; i++) {
+        printf("%.1f ", array[i]);
+        printf("\n");
+    }
+    printf("\n");
+    printf("Posições e valores menores que ß (%.2f): \n", beta);
+    for (int i = 0; i < size; i++) {
+        if (array[i] < beta) {
+            printf("Posição: %d, Valor: %.1f\n", i, array[i]);
+            soma += array[i];
+        }
+    }
+    printf("\n");
+    printf("Soma dos termos menores que ß: %.2f\n", soma);
+    return 0;
+}
+
