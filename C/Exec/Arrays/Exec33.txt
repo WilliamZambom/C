@@ -1,0 +1,51 @@
+/*
+33. Faça um algoritmo em C que preencha dois vetores A e B (TAMANHO: 5) com valores inteiros.
+Depois de preencher os vetores A e B, exiba um vetor C, sendo que C = 3 * A ̶B.
+*/
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define tam 5 
+#define max 99   
+#define min 1   
+
+int main(void) {
+    int A[tam];
+    int B[tam];
+    int C[tam];
+    int contador = 0;
+    srand(time(0));   
+
+    //gerar numero vetores a e b 
+    for (int i = 0; i < tam; i++) {
+        A[i] = (rand() % (max - min + 1)) + min;
+    }
+    for (int i = 0; i < tam; i++) {
+        B[i] = (rand() % (max - min + 1)) + min;
+    }
+
+    printf("Vetor A:\n");
+    for (int i = 0; i < tam; i++) {
+        printf("%d ", A[i]);
+    }
+
+    printf("\n\n");
+
+    printf("Vetor B:\n");
+    for (int i = 0; i < tam; i++) {
+        printf("%d ", B[i]);
+    }
+
+    printf("\n\n");
+
+    for (int i = 0; i < tam; i++) {
+        C[i] = 3 * A[i] - B[i];
+    }
+    printf("Vetor C:\n");
+    for (int i = 0; i < tam; i++){
+        printf("%d ", C[i]);
+    }
+
+    return 0;
+}

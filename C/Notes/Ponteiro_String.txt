@@ -1,0 +1,34 @@
+// STRING COM PONTEIRO
+/*
+Fazer um algoritmo com:
+    -> Ponteiros fixos: Vetor
+    -> Ponteiros Variáveis: Mudança de endereço da memória
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#define TAM 100 // ESTATICA + GLOBAL (escopo)
+//Protótipo:
+void funcao(char *MSG, char *INV);
+// Função:
+void funcao(char *MSG, char *INV){
+    int j = 0, i = strlen(MSG) - 1;
+    while(i >= 0){
+        INV[j] = MSG[i]; //Palavra invertida (NOVA)
+        j++;
+        i--;
+    }
+    INV[j] = '\0'; //(PARAR NO FINAL DA PALAVRA)
+}
+int main(void){
+    char MSG[TAM], INV[TAM];
+    printf("MSG: "); scanf("\n%[^\n]", MSG);
+    funcao(MSG, INV);
+    printf("PALAVRA ORIGINAL : %s\n", MSG);
+    printf("PALAVRA INVERTIDA: %s\n", INV);
+  return 0;
+}
+
+//modularização com ponteiro
+//questão enade
+//Repetição

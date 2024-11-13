@@ -1,0 +1,35 @@
+/*
+17. Exiba na tela a média de tempo de todos os atletas.
+*/ 
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define size 25000   
+#define max 99
+#define min 10  
+
+int main() {
+    int array[size];
+    float media;
+    int soma = 0;
+    srand(time(0));    
+
+    for (int i = 0; i < size; i++) {
+        array[i] = (rand() % (max - min + 1)) + min;
+        soma += array [i];
+    } 
+
+    printf("Tempo gerado(MIN): \n");
+    for (int i = 0; i < size; i++) {
+        printf("%d ", array[i]);
+        printf("\n");
+    }
+    //calculo média
+    media = (float) soma / size;
+
+    printf("Média do tempo dos atletas: %.2f MIN\n", media);
+
+    return 0;
+}
+

@@ -1,0 +1,38 @@
+/*
+19. Exiba a matrícula do atleta que venceu a prova e do último colocado da prova.
+*/ 
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define qtd 10   
+#define max 99
+#define min 10  
+
+int main(void) {
+    int matriculas[qtd]; 
+    int tempos[qtd];      
+    int vencedor = 0;         
+    int ultimo = 0; 
+    int soma = 0;
+    srand(time(0));    
+
+    for (int i = 0; i < qtd; i++) {
+        matriculas[i] = i + 1; 
+        tempos[i] = (rand() % (max - min + 1)) + min;  
+    }
+
+    for (int i = 1; i < qtd; i++) {
+        if (tempos[i] < tempos[vencedor]) {
+            vencedor = i;  // índice do vencedor
+        }
+        if (tempos[i] > tempos[ultimo]) {
+            ultimo = i;  // índice do ultimo lugar
+        }
+    }
+
+    printf("Matrícula do atleta vencedor: %d (Tempo: %d minutos)\n", matriculas[vencedor],tempos[vencedor]);
+    printf("Matrícula do último colocado: %d (Tempo: %d minutos)\n", matriculas[ultimo], tempos[ultimo]);
+    return 0;
+}
+

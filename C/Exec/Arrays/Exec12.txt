@@ -1,0 +1,39 @@
+// 12. Exibir na tela os termos maiores que a média dos termos que estão nos índices: 0, 4 e 9.
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define size 10   
+#define max 99.0 
+#define min 10.0  
+
+int main() {
+    float array[size]; 
+    srand(time(0));    
+
+    for (int i = 0; i < size; i++) {
+        array[i] = ((rand() % (int)((max - min) * 10 + 1)) / 10.0) + min;
+    }
+
+    printf("Números gerados: \n");
+    for (int i = 0; i < size; i++) {
+        printf("%.1f ", array[i]);
+    }
+
+    printf("\n");
+    float media = (array[0] + array[4] + array[9]) / 3;
+    printf("Média dos valores nos índices 0, 4 e 9: %.1f\n", media);
+
+    printf("\n");
+
+    printf("Termos maiores que a média: \n");
+    for (int i = 0; i < size; i++) {
+        if (array[i] > media) {
+            printf("%.1f ", array[i]);
+        }
+    }
+
+    printf("\n");
+    return 0;
+}
+

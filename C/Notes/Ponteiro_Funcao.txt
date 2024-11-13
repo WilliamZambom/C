@@ -1,0 +1,43 @@
+/*
+EXEMPLO: Aplicando os ponteiros nas funções
+Fazer um algoritmo com:
+  -> Ponteiros Fixos: Vetor
+  -> Ponteiros Variáveis: Mudança de Endereços de Memória
+*/
+#include <stdio.h>
+#include <stdlib.h>
+#define TAMANHO 100 // MAX: ESTÁTICA
+// PROTÓTIPOS: 3 forma de declarar um vetor
+//void funcao(char palavra[TAMANHO], int *miusc, int *maius, int *demais);
+//void funcao(char palavra[], int *miusc, int *maius, int *demais);
+void funcao(char *palavra, int *miusc, int *maius, int *demais);
+// FUNÇÕES:
+void funcao(char *palavra, int *miusc, int *maius, int *demais){
+  int i = 0;
+  // RESETAR
+  *miusc = 0; *maius = 0; *demais = 0;
+  while(palavra[i] != '\0'){
+    // minúsculas: [a, z]
+    if(palavra[i] >= 'a' && palavra[i] <= 'z')
+      // ACESSO INDIRETO DE VALORES: ENDEREÇO DE MEMÓRIA
+      *miusc = (*miusc) + 1;
+    // maiúsculas: [A, Z]
+    else if(palavra[i] >= 'A' && palavra[i] <= 'Z')
+      *maius = (*maius) + 1;
+    else
+      *demais = (*demais) + 1;
+    i++; // STEP
+  }
+}
+int main(void) {
+  char palavra[TAMANHO];
+  int miusc, maius, demais;
+  printf("PALAVRA: "); scanf("\n%[^\n]", palavra);
+  funcao(palavra, &miusc, &maius, &demais);
+  printf("PALAVRA: %s TEM:\n", palavra);
+  printf("MINÚSCULAS: %i\n", miusc);
+  printf("MAIÚSCULAS: %i\n", maius);
+  printf("DEMAIS CARACTERES: %i\n", demais);
+  return 0;
+}
+

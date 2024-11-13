@@ -1,0 +1,31 @@
+/*
+    1. Escrever um programa em C que leia uma mensagem e inveta ela.
+*/
+#include <stdio.h>
+#include <stdlib.h>
+#define TAM 100
+
+ void funcao(char *MSG, char *INV);
+ void funcao(char *MSG, char *INV){
+    int j = 0, i = strlen(MSG) - 1;
+    while(i >= 0){
+        INV[j] = MSG[i];
+        j++;
+        i--;
+  }
+  INV[j] = '\0';
+}
+
+int main(void){
+    char MSG[TAM], INV[TAM];
+    printf("Digite a mensagem \n"); scanf("%s", &MSG);
+
+    funcao(MSG, INV);
+
+    printf("Mensagem: %s \n", MSG);
+    printf("Mensagem invertida: %s \n", INV);
+
+    printf("\n");
+    return 0;
+}
+

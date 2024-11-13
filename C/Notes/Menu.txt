@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int p, i;
+    float salario;
+    printf("Iniciar programa 1: \n");
+    scanf("%i", &p);
+
+    if(p == 1){
+        do{
+        printf("Menu: \n");
+        printf("Digite seu salário: \n");
+        scanf("%f", &salario);
+        printf("Continuar 1: ");
+        scanf("%i", &p);
+        i++;
+        }while(p == 1);
+    }
+    return 0;
+}

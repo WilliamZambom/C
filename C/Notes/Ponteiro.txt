@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+void CUBO1(float l, float *area, float *volume);
+void CUBO2(float l, float *area, float *volume);
+
+void CUBO1(float l, float *area, float *volume){
+    *area = 6 * pow(l, 2);
+    *volume = pow(l, 3);
+}
+
+float CUBO2(float l, float *volume){
+    float area;
+    area = 6 * pow(l, 2);
+    *volume = pow(l, 2);
+    return area;
+}
+
+int main(void){
+    float l, area, volume;
+    printf("L: "); scanf("&f", &l);
+    if(l <= 0) printf("ERRO. \n");
+
+    else{
+        //CUBO1(l, &area, &volume);
+        area = cubo2(l, &volume);
+        printf("AREA: %1f\n", area);
+        printf("VOLUME: %1f\n", volume);
+    }
+    return 0;
+}
+
+// biblioteca constante global funÃ§Ãµes
+// 2 questao string modularizada
+// Função ponteiro
+
+// Prova string ponteiros funÃ§oes

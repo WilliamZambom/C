@@ -1,0 +1,82 @@
+/*
+40. Pesquisar e exibir os dados completos de uma mercadoria pelo seu código, usando a pesquisa
+binária.
+*/
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define tam 10   
+#define max 99  
+#define min 10   
+
+int main(void) {
+    int codigo[tam];
+    int qtd[tam];
+    float preco[tam];
+
+    srand(time(0));
+
+    for (int i = 0; i < tam; i++) {
+        codigo[i] = 1000 + i; 
+        qtd[i] = rand() % 10 + 1; 
+        preco[i] = (float)(rand() % 1000) / 100; 
+    }
+
+    for (int i = 0; i < tam - 1; i++) {
+        for (int j = 0; j < tam - i - 1; j++) {
+            if (codigo[j] > codigo[j + 1]) {
+
+                int tempCodigo = codigo[j];
+                codigo[j] = codigo[j + 1];
+                codigo[j + 1] = tempCodigo;
+
+                int tempQuantidade = qtd[j];
+                qtd[j] = qtd[j + 1];
+                qtd[j + 1] = tempQuantidade;
+
+                float tempPreco = preco[j];
+                preco[j] = preco[j + 1];
+                preco[j + 1] = tempPreco;
+            }
+        }
+    }
+
+    printf("Carrinho de Compras:\n");
+    printf("Código\tQuantidade\tPreço\n");
+    for (int i = 0; i < tam; i++) {
+        printf("%d\t%d\t\t%.2f\n", codigo[i], qtd[i], preco[i]);
+    }
+
+    // Pesquisa de mercadoria
+    int codigoBusca;
+    printf("\nDigite o código da mercadoria a ser pesquisada: ");
+    scanf("%d", &codigoBusca);
+
+    int esquerda = 0, direita = tam - 1, encontrado = -1;
+
+    while (esquerda <= direita) {
+        int meio = esquerda + (direita - esquerda) / 2;
+
+        if (codigo[meio] == codigoBusca) {
+            encontrado = meio; 
+            break;
+        }
+        if (codigo[meio] < codigoBusca) {
+            esquerda = meio + 1; 
+        } else {
+            direita = meio - 1;
+        }
+    }
+
+    if (encontrado != -1) {
+        printf("Mercadoria encontrada:\n");
+        printf("Código: %d\n", codigo[encontrado]);
+        printf("Quantidade: %d\n", qtd[encontrado]);
+        printf("Preço: %.2f\n", preco[encontrado]);
+    } else {
+        printf("Mercadoria com código %d não encontrada.\n", codigoBusca);
+    }
+
+    return 0;
+}

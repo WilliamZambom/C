@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int funcao(int a, int b);
+int funcao(int a, int b){
+    int soma = a + b;
+    return soma;
+}
+
+int main()
+{
+    int a, b;
+    int soma;
+
+    printf("Digite o 1 número: ");
+    scanf("%i", &a);
+    printf("Digite o 2 número: ");
+    scanf("%i", &b);
+
+    soma = funcao(a, b);
+    printf("Soma = %i", soma);
+    return 0;
+}
