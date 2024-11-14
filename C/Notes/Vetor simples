@@ -1,0 +1,17 @@
+// Exemplo de manipulação de vetores
+#include <stdio.h>
+#include <stdlib.h>
+#define TAM 2
+
+int main(){
+    int array[TAM];
+    int i;
+    for (i = 0; i < TAM; i++){
+        printf("Digite o valor do elemento [%i]: ", i+1);
+        scanf("%i", &array[i]);
+    }
+    for(i = 0; i < TAM; i++){
+        printf("O valor de [%i] é: %i \n", i, array[i]);
+    }
+    return 0;
+}
